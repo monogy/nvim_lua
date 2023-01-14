@@ -1,16 +1,19 @@
-# 我的NeoVim Lua配置文件
-       __  ____   ___   _         __     ___           _    _   _
-      |  \/  \ \ / / \ | | ___  __\ \   / (_)_ __ ___ | |  | | | | __ _
-      | |\/| |\ V /|  \| |/ _ \/ _ \ \ / /| | '_ ` _ \| |  | | | |/ _` |
-      | |  | | | | | |\  |  __/ (_) \ V / | | | | | | | |__| |_| | (_| |
-      |_|  |_| |_| |_| \_|\___|\___/ \_/  |_|_| |_| |_|_____\___/ \__,_|
+<!-- # 我的NeoVim Lua配置文件 -->
+
+        __  ___      _   __                _           __                ______             _____
+       /  |/  /_  __/ | / /__  ____ _   __(_)___ ___  / /   __  ______ _/ ____/____  ____  / __(_)___ _
+      / /|_/ / / / /  |/ / _ \/ __ \ | / / / __ `__ \/ /   / / / / __ `/ /    / __ \/ __ \/ /_/ / __ `/
+     / /  / / /_/ / /|  /  __/ /_/ / |/ / / / / / / / /___/ /_/ / /_/ / /___ / /_/ / / / / __/ / /_/ /
+    /_/  /_/\__, /_/ |_/\___/\____/|___/_/_/ /_/ /_/_____/\__,_/\__,_/\____/ \____/_/ /_/_/ /_/\__, /
+           /____/                                                                             /____/
 
 
-## 基于neovim的lua配置文件
 
-## 1.安装插件
+<!-- ## 基于neovim的lua配置文件 -->
 
-### 1.1 LSP服务/美化
+# 1.插件
+
+## 1.1 LSP服务/美化
 
 |插件名称|解释|
 :---|:---|
@@ -38,7 +41,8 @@
 |`chipsenkbeil/distant.nvim`|在舒适的本地环境中，在远程机器上编辑文件、运行程序和使用 LSP|
 
 
-### 1.2 其他插件
+## 1.2 其他插件
+
 |插件名称|解释|
 :---|:---|
 |`numToStr/Comment.nvim`|注释插件-未配置使用|
@@ -69,9 +73,9 @@
 
 
 
-## 2.快捷键
+# 2.快捷键
 
-### 2.1 新按键映射
+## 2.1 新按键映射
 
 New cursor movement (the default arrow keys are used for resizing windows)  
 
@@ -106,7 +110,7 @@ New cursor movement (the default arrow keys are used for resizing windows)
 |`:`|`;`||
 
 
-### 2.2 内置快捷键
+## 2.2 内置快捷键
 
 |快捷键|模式|解释|  
 :---|:---:|:---|
@@ -125,7 +129,7 @@ New cursor movement (the default arrow keys are used for resizing windows)
 |`<leader>q`||`normal @` 宏录制|
 |`u` `s` `S`|``|无效map|
 
-### 2.3 插件管理
+## 2.3 插件管理
 
 |快捷键|模式|解释|  
 :---|:---:|:---:|
@@ -137,7 +141,7 @@ New cursor movement (the default arrow keys are used for resizing windows)
 |`<leader>pu`|``|`PackerSync<CR>` 插件更新|
 |`<leader>pc`|``|`PackerClean<CR>` 插件清除|
 
-### 2.4 Split窗口
+## 2.4 Split窗口
 
 |快捷键|模式|解释|  
 :---|:---:|:---:|
@@ -153,7 +157,7 @@ New cursor movement (the default arrow keys are used for resizing windows)
 |`sv`||两个窗口左右排布|
 
 
-### 2.5 Lspsaga
+## 2.5 Lspsaga
 
 |快捷键|模式|解释|  
 :---|:---:|:---:|
@@ -172,7 +176,7 @@ New cursor movement (the default arrow keys are used for resizing windows)
 |`gp`|`n`|显示函数定义`|
 
 
-### 2.6 Telescope
+## 2.6 Telescope
 
 |快捷键|模式|解释|  
 :---|:---:|:---:|
@@ -183,7 +187,7 @@ New cursor movement (the default arrow keys are used for resizing windows)
 |`fo`|`n`|Check Recent File |
 |`fm`|`n`|Find Marks|
 
-### 2.7 浮动终端
+## 2.7 浮动终端
 
 |快捷键|模式|解释|  
 :---|:---:|:---:|
@@ -196,7 +200,7 @@ New cursor movement (the default arrow keys are used for resizing windows)
 |`<F12`|`n`|打开/关闭终端|
 |`<F12`|`t`|打开/关闭终端|
 
-### 2.8 Tab标签管理
+## 2.8 Tab标签管理
 
 |快捷键|模式|解释|  
 :---|:---:|:---:|
@@ -205,7 +209,7 @@ New cursor movement (the default arrow keys are used for resizing windows)
 |`sc`|``|`bd<CR>` 标签关闭|
 
 
-### 2.9 列出所有函数和变量 - Vista
+## 2.9 列出所有函数和变量 - Vista
 
 |快捷键|模式|解释|  
 :---|:---:|:---:|
@@ -213,49 +217,49 @@ New cursor movement (the default arrow keys are used for resizing windows)
 |`<C-t>`|``|`Vista finder<CR>` 查找Vista|
 
 
-### 2.10 文件管理-Ranger
+## 2.10 文件管理-Ranger
 
 |快捷键|模式|解释|  
 :---|:---:|:---:|
 |`R`||`FloatermNew ranger<CR>` 终端打开Ranger|
 
 
-### 2.11 注释/反注释-Nerdcommenter
+## 2.11 注释/反注释-Nerdcommenter
 
 |快捷键|模式|解释|  
 :---|:---:|:---:|
 |`<F7>`|``|`<plug>NERDCommenterToggle` 注释/反注释|
 
 
-### 2.12 缩进显示-IndentLine
+## 2.12 缩进显示-IndentLine
 
 |快捷键|模式|解释|  
 :---|:---:|:---:|
 |`<C-l>`|`n`|`IndentLinesToggle<CR>`打开/关闭缩进显示|
 
 
-### 2.13 代码自动格式化-Autoformat
+## 2.13 代码自动格式化-Autoformat
 
 |快捷键|模式|解释|  
 :---|:---:|:---:|
 |`<F6>`|``|`Autoformat<CR>` 代码格式化|
 
 
-### 2.14 文件树-nvim-tree
+## 2.14 文件树-nvim-tree
 
 |快捷键|模式|解释|  
 :---|:---:|:---:|
 |`<F3>`|``|`NvimTreeToggle<CR>` 打开/关闭文件树|
 
 
-### 2.15 模糊文件搜索-FZF
+## 2.15 模糊文件搜索-FZF
 
 |快捷键|模式|解释|  
 :---|:---:|:---:|
 |`<C-p>`|`n`|`FZF <right>` 按路径查找文件|
 
 
-### 2.16 文本查找/替换-Far
+## 2.16 文本查找/替换-Far
 
 |快捷键|模式|解释|  
 :---|:---:|:---:|
@@ -265,22 +269,20 @@ New cursor movement (the default arrow keys are used for resizing windows)
 
 
 
-### 2.17 对文本进行列对齐 Tabular
+## 2.17 对文本进行列对齐 Tabular
 
 |快捷键|模式|解释|  
 :---|:---:|:---:|
 |`.`|``|`Tab /` 对多行文本按指定字符进行对齐|
 
 
-### 2.18 代码片段-Snip
+## 2.18 代码片段-Snip
 |快捷键|模式|解释|  
 :---|:---:|:---:|
 |`se`|`n`|`VsnipOpenEdit<CR>` 打开Snip片段编辑|
 
 
-
-
-### 2.19 vim-visual-multi
+## 2.19 vim-visual-multi
 
 |快捷键|解释|  
 :---|:---|
@@ -292,7 +294,7 @@ New cursor movement (the default arrow keys are used for resizing windows)
 |`Ctrl+z`|撤销|
 |`Ctrl+y`|重做|
 
-### 2.20 文本标记-BookMarks
+## 2.20 文本标记-BookMarks
 
 |快捷键|模式|解释|  
 :---|:---:|:---:|
