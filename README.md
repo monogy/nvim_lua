@@ -298,7 +298,7 @@ New cursor movement (the default arrow keys are used for resizing windows)
 :---|:---:|:---:|
 |`mx`|`n`|`自定义x增加标签`|
 |`m,`|`n`|`按顺序增加标签`|
-|`m.`|`n`|`去掉标签`|
+|`m.`|`n`|`按顺序增加标签/去掉标签`|
 |`m/`|`n`|`列出标签`|
 |`m?`|`n`|`列出标签个数`|
 |`m<space>`|`n`|`去掉所有标签`|
