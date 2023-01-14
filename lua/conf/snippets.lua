@@ -3,7 +3,7 @@ local ls = require("luasnip")
 local s = ls.snippet
 local sn = ls.snippet_node
 local t = ls.text_node
-local i = ls.insert_node
+local h = ls.insert_node
 local f = ls.function_node
 local c = ls.choice_node
 local d = ls.dynamic_node
@@ -55,7 +55,7 @@ rec_ls = function()
       {
         -- Order is important, sn(...) first would cause infinite loop of expansion.
         t(""),
-        sn(nil, {t({"", "\t\\item "}), i(1), d(2, rec_ls, {})})
+        sn(nil, {t({"", "\t\\item "}), h(1), d(2, rec_ls, {})})
       }
     )
   )
@@ -65,7 +65,7 @@ end
 local function jdocsnip(args, _, old_state)
   local nodes = {
     t({"/**", " * "}),
-    i(1, "A short Description"),
+    h(1, "A short Description"),
     t({"", ""})
   }
 
@@ -74,7 +74,7 @@ local function jdocsnip(args, _, old_state)
   local param_nodes = {}
 
   if old_state then
-    nodes[2] = i(1, old_state.descr:get_text())
+    nodes[2] = h(1, old_state.descr:get_text())
   end
   param_nodes.descr = nodes[2]
 
@@ -91,9 +91,9 @@ local function jdocsnip(args, _, old_state)
       local inode
       -- if there was some text in this parameter, use it as static_text for this new snippet.
       if old_state and old_state[arg] then
-        inode = i(insert, old_state["arg" .. arg]:get_text())
+        inode = h(insert, old_state["arg" .. arg]:get_text())
       else
-        inode = i(insert)
+        inode = h(insert)
       end
       vim.list_extend(nodes, {t({" * @param " .. arg .. " "}), inode, t({"", ""})})
       param_nodes["arg" .. arg] = inode
@@ -105,9 +105,9 @@ local function jdocsnip(args, _, old_state)
   if args[1][1] ~= "void" then
     local inode
     if old_state and old_state.ret then
-      inode = i(insert, old_state.ret:get_text())
+      inode = h(insert, old_state.ret:get_text())
     else
-      inode = i(insert)
+      inode = h(insert)
     end
 
     vim.list_extend(nodes, {t({" * ", " * @return "}), inode, t({"", ""})})
@@ -119,9 +119,9 @@ local function jdocsnip(args, _, old_state)
     local exc = string.gsub(args[3][2], " throws ", "")
     local ins
     if old_state and old_state.ex then
-      ins = i(insert, old_state.ex:get_text())
+      ins = h(insert, old_state.ex:get_text())
     else
-      ins = i(insert)
+      ins = h(insert)
     end
     vim.list_extend(nodes, {t({" * ", " * @throws " .. exc .. " "}), ins, t({"", ""})})
     param_nodes.ex = ins
@@ -150,7 +150,7 @@ end
 -- text value is set to the current date in the desired format.
 local date_input = function(args, state, fmt)
   local fmt = fmt or "%Y-%m-%d"
-  return sn(nil, i(1, os.date(fmt)))
+  return sn(nil, h(1, os.date(fmt)))
 end
 
 ls.snippets = {
@@ -173,14 +173,14 @@ ls.snippets = {
         f(copy, 2),
         t({"", "function "}),
         -- Placeholder/Insert.
-        i(1),
+        h(1),
         t("("),
         -- Placeholder with initial text.
-        i(2, "int foo"),
+        h(2, "int foo"),
         -- Linebreak
         t({") {", "\t"}),
         -- Last Placeholder, exit Point of the snippet. EVERY 'outer' SNIPPET NEEDS Placeholder 0.
-        i(0),
+        h(0),
         t({"", "}"})
       }
     ),
@@ -196,7 +196,7 @@ ls.snippets = {
           }
         ),
         t("class "),
-        i(2),
+        h(2),
         t(" "),
         c(
           3,
@@ -208,7 +208,7 @@ ls.snippets = {
               nil,
               {
                 t("extends "),
-                i(1),
+                h(1),
                 t(" {")
               }
             ),
@@ -216,14 +216,14 @@ ls.snippets = {
               nil,
               {
                 t("implements "),
-                i(1),
+                h(1),
                 t(" {")
               }
             )
           }
         ),
         t({"", "\t"}),
-        i(0),
+        h(0),
         t({"", "}"})
       }
     ),
@@ -306,7 +306,7 @@ ls.snippets = {
     s(
       "transform",
       {
-        i(1, "initial text"),
+        h(1, "initial text"),
         t({"", ""}),
         -- lambda nodes accept an l._1,2,3,4,5, which in turn accept any string transformations.
         -- This list will be applied in order to the first node given in the second argument.
@@ -316,9 +316,9 @@ ls.snippets = {
     s(
       "transform2",
       {
-        i(1, "initial text"),
+        h(1, "initial text"),
         t("::"),
-        i(2, "replacement for e"),
+        h(2, "replacement for e"),
         t({"", ""}),
         -- Lambdas can also apply transforms USING the text of other nodes:
         l(l._1:gsub("e", l._2), {1, 2})
@@ -345,20 +345,20 @@ ls.snippets = {
           {}
         ),
         t('">'),
-        i(1),
+        h(1),
         t("</a>"),
-        i(0)
+        h(0)
       }
     ),
     -- Shorthand for repeating the text in a given node.
-    s("repeat", {i(1, "text"), t({"", ""}), r(1)}),
+    s("repeat", {h(1, "text"), t({"", ""}), r(1)}),
     -- Directly insert the ouput from a function evaluated at runtime.
     s("part", p(os.date, "%Y")),
     -- use matchNodes to insert text based on a pattern/function/lambda-evaluation.
     s(
       "mat",
       {
-        i(1, {"sample_text"}),
+        h(1, {"sample_text"}),
         t(": "),
         m(1, "%d", "contains a number", "no number :(")
       }
@@ -368,7 +368,7 @@ ls.snippets = {
     s(
       "mat2",
       {
-        i(1, {"sample_text"}),
+        h(1, {"sample_text"}),
         t(": "),
         m(1, "[abc][abc][abc]")
       }
@@ -378,7 +378,7 @@ ls.snippets = {
     s(
       "mat3",
       {
-        i(1, {"sample_text"}),
+        h(1, {"sample_text"}),
         t(": "),
         m(1, l._1:gsub("[123]", ""):match("%d"), "contains a number that isn't 1, 2 or 3!")
       }
@@ -389,7 +389,7 @@ ls.snippets = {
     s(
       "mat4",
       {
-        i(1, {"sample_text"}),
+        h(1, {"sample_text"}),
         t(": "),
         m(
           1,
@@ -404,7 +404,7 @@ ls.snippets = {
     s(
       "nempty",
       {
-        i(1, "sample_text"),
+        h(1, "sample_text"),
         n(1, "i(1) is not empty!")
       }
     ),
@@ -414,7 +414,7 @@ ls.snippets = {
     s(
       "dl1",
       {
-        i(1, "sample_text"),
+        h(1, "sample_text"),
         t({":", ""}),
         dl(2, l._1, 1)
       }
@@ -423,8 +423,8 @@ ls.snippets = {
     s(
       "dl2",
       {
-        i(1, "sample_text"),
-        i(2, "sample_text_2"),
+        h(1, "sample_text"),
+        h(2, "sample_text_2"),
         t({"", ""}),
         dl(3, l._1:gsub("\n", " linebreak ") .. l._2, {1, 2})
       }
@@ -436,8 +436,8 @@ ls.snippets = {
       fmt(
         "To {title} {} {}.",
         {
-          i(2, "Name"),
-          i(3, "Surname"),
+          h(2, "Name"),
+          h(3, "Surname"),
           title = c(1, {t("Mr."), t("Ms.")})
         }
       )
@@ -455,9 +455,9 @@ ls.snippets = {
 			}}
 			]],
         {
-          i(1, "x"),
+          h(1, "x"),
           r(1),
-          i(2, "y"),
+          h(2, "y"),
           r(2)
         }
       )
@@ -476,9 +476,9 @@ ls.snippets = {
       )
     ),
     -- The delimiters can be changed from the default `{}` to something else.
-    s("fmt4", fmt("foo() { return []; }", i(1, "x"), {delimiters = "[]"})),
+    s("fmt4", fmt("foo() { return []; }", h(1, "x"), {delimiters = "[]"})),
     -- `fmta` is a convenient wrapper that uses `<>` instead of `{}`.
-    s("fmt5", fmta("foo() { return <>; }", i(1, "x"))),
+    s("fmt5", fmta("foo() { return <>; }", h(1, "x"))),
     -- By default all args must be used. Use strict=false to disable the check
     s("fmt6", fmt("use {} only", {t("this"), t("not this")}, {strict = false}))
   },
@@ -505,13 +505,13 @@ ls.snippets = {
             t("int"),
             t("double"),
             t("boolean"),
-            i(nil, "")
+            h(nil, "")
           }
         ),
         t(" "),
-        i(3, "myFunc"),
+        h(3, "myFunc"),
         t("("),
-        i(4),
+        h(4),
         t(")"),
         c(
           5,
@@ -521,13 +521,13 @@ ls.snippets = {
               nil,
               {
                 t({"", " throws "}),
-                i(1)
+                h(1)
               }
             )
           }
         ),
         t({" {", "\t"}),
-        i(0),
+        h(0),
         t({"", "}"})
       }
     )
@@ -539,7 +539,7 @@ ls.snippets = {
       "ls",
       {
         t({"\\begin{itemize}", "\t\\item "}),
-        i(1),
+        h(1),
         d(2, rec_ls, {}),
         t({"", "\\end{itemize}"})
       }

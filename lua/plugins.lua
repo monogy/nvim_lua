@@ -104,7 +104,7 @@ return require("packer").startup(
       'tami5/lspsaga.nvim',
       config = function()
         require('conf.lspsaga-conf')
-      end
+      end,
     }
 
     -- Dashboard
@@ -145,8 +145,8 @@ return require("packer").startup(
     -- tag = "v2.*",
     -- requires = 'kyazdani42/nvim-web-devicons',
     -- config = function()
-    -- -- require('bufferline').setup{}
-    -- -- require('conf.bufferline-conf')
+      -- require('bufferline').setup{}
+      -- require('conf.bufferline')
 
     -- end
     -- }
@@ -327,6 +327,37 @@ return require("packer").startup(
     -- git列
     use 'airblade/vim-gitgutter'
 
+    -- 浮动终端
+    use 'voldikss/vim-floaterm'
+
+    -- status line
+    -- use {
+        -- 'nvim-lualine/lualine.nvim',
+        -- requires = 'kyazdani42/nvim-web-devicons'
+    -- }
+    --
+    --
+    --
+    use { 'nvim-treesitter/nvim-treesitter'}
+
+    use 'SmiteshP/nvim-gps'
+    -- winbar
+    -- use { 
+        -- 'fgheng/winbar.nvim',
+      -- requires = {
+        -- 'SmiteshP/nvim-gps'
+     -- },
+      -- config = function()
+        -- require('winbar')
+      -- end,    
+      -- }
+
+  use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig"
+}
+
+
   end,
 
   config = {
@@ -335,7 +366,8 @@ return require("packer").startup(
       --修改这里可以切换加速的节点
       -- default_url_format = "https://hub.fastgit.xyz/%s",
       -- default_url_format = "https://mirror.ghproxy.com/https://github.com/%s",
-      clone_timeout = 60,
+      clone_timeout = 200,
+      -- default_url_format = "https://ghproxy.com/https://github.com/%s.git",
       default_url_format = "https://ghproxy.com/https://github.com/%s.git",
     },
     display = {

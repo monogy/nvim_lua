@@ -2,19 +2,20 @@
 vim.o.relativenumber = true
 vim.o.number = true
 vim.o.noexpandtab = true
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 vim.o.showtabline = 2
-vim.o.smartindent = true
 vim.o.termguicolors = true
 vim.o.cursorline = true
 vim.o.mouse = 'a'
 vim.o.scrolloff = 4
 vim.o.expandtab = true
+-- vim.o.smartindent = true
+vim.o.autoindent = true
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
 vim.o.wildmenu = true
 vim.o.ignorecase = true
-vim.o.swapfile = false
+vim.o.swapfile = true
 
 vim.cmd('hi Normal ctermfg=252 ctermbg=none')
 
@@ -70,6 +71,12 @@ vim.o.regexpengine=1
 vim.o.termencoding='UTF-8'
 vim.o.encoding='UTF-8'
 vim.o.fileencodings='UTF8,UCS-BOM,GBK,CP936,GB2312,GB18030'
+
+vim.cmd('set backupdir=~/.config/nvim/tmp/backup,.')
+vim.cmd('set directory=~/.config/nvim/tmp/backup,.')
+vim.cmd('silent !mkdir -p ~/.config/nvim/tmp/backup')
+
+
 
 -- vim.cmd('let g:lightline={ "enable": {"statusline": 1, "tabline": 0} }')
 

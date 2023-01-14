@@ -4,12 +4,12 @@ local opts = { noremap = true, silent = true }
 
 -- Move to previous/next
 map('n', '<A-[>', '<Cmd>BufferPrevious<CR>',{})
-map('n', '<sa>', '<Cmd>BufferPrevious<CR>',{})
+map('n', 'sa', '<Cmd>BufferPrevious<CR>',{})
 map('n', '<A-]>', '<Cmd>BufferNext<CR>',{})
-map('n', '<sd>', '<Cmd>BufferNext<CR>',{})
+map('n', 'sd', '<Cmd>BufferNext<CR>',{})
 -- Re-order to previous/next
-map('n', '<A-,>', '<Cmd>BufferMovePrevious<CR>', opts)
-map('n', '<A-.>', '<Cmd>BufferMoveNext<CR>', opts)
+-- map('n', '<A-,>', '<Cmd>BufferMovePrevious<CR>', opts)
+-- map('n', '<A-.>', '<Cmd>BufferMoveNext<CR>', opts)
 -- Goto buffer in position...
 map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)
 map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts)
@@ -25,7 +25,7 @@ map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
 map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
 -- Close buffer
 map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
-map('n', '<sc>', '<Cmd>BufferClose<CR>', opts)
+map('n', 'sc', '<Cmd>BufferClose<CR>', opts)
 -- Wipeout buffer
 --                 :BufferWipeout
 -- Close commands

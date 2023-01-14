@@ -12,7 +12,7 @@ map('', '<C-t>', ':Vista finder<CR>', {})
 
 --- Ranger
 
-map('', 'R', ':Ranger<CR>', {})
+map('', 'R', ':FloatermNew ranger<CR>', {})
 vim.cmd('let g:ranger_map_keys = 0')
 
 
@@ -70,9 +70,9 @@ vim.cmd('autocmd FileType markdown nnoremap <silent> <C-v> :call mdip#MarkdownCl
 
 
 -- " IndentLines
-map('n', '<LEADER>il', ':IndentLinesToggle<CR>', {})
-vim.cmd('let g:indentLine_enabled = 0')
-vim.cmd('let g:indentLine_char_list = ["|", "¦", "┆", "┊"]')
+-- map('n', '<LEADER>il', ':IndentLinesToggle<CR>', {})
+-- vim.cmd('let g:indentLine_enabled = 0')
+-- vim.cmd('let g:indentLine_char_list = ["|", "¦", "┆", "┊"]')
 
 -- auto-format
 map('', '<F6>', ':Autoformat<CR>', {})
@@ -163,8 +163,34 @@ map('', '.', ':Tab /', {})
 --
 
 -- Virtual-Multi
+-- vim.cmd([[
+
+-- "let g:VM_theme             = 'iceblue'
+-- "let g:VM_default_mappings = 0
+-- let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
+-- let g:VM_maps                       = {}
+-- let g:VM_custom_motions             = {'i': 'k', 'j': 'h', 'k': 'j', 'h': 'i'}
+-- let g:VM_maps['i']                  = 'h'
+-- let g:VM_maps['I']                  = 'H'
+-- let g:VM_maps['Find Under']         = '<C-m>'
+-- let g:VM_maps['Find Subword Under'] = '<C-m>'
+-- let g:VM_maps['Find Next']          = 'n'
+-- let g:VM_maps['Find Prev']          = 'N'
+-- let g:VM_maps['Remove Region']      = 'q'
+-- let g:VM_maps['Skip Region']        = '<c-x>'
+-- let g:VM_maps["Undo"]               = '<C-z>'
+-- let g:VM_maps["Redo"]               = '<C-y>'
+
+-- ]])
+
+
+
+
+-- Virtual-Multi
 vim.cmd([[
 
+"let g:VM_theme             = 'iceblue'
+"let g:VM_default_mappings = 0
 let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
 let g:VM_maps                       = {}
 let g:VM_custom_motions             = {'i': 'k', 'j': 'h', 'k': 'j', 'h': 'i'}
@@ -179,12 +205,33 @@ let g:VM_maps['Skip Region']        = '<c-x>'
 let g:VM_maps["Undo"]               = '<C-z>'
 let g:VM_maps["Redo"]               = '<C-y>'
 
+
 ]])
 
+
+-- map('n','<CR>','<Plug>(VM-Visual-All)',{})
 
 -- vsnip编辑
 
 map('n','se',':VsnipOpenEdit<CR>',{})
 
 
+--浮动终端
+vim.cmd([[
+  let g:floaterm_opener = 'tabe'
+  let g:floaterm_height = 0.8 
+  let g:floaterm_width = 0.8
+]])
+
+
+-- gitgutter
+vim.cmd([[
+
+omap ga <Plug>(GitGutterTextObjectInnerPending)
+omap gh <Plug>(GitGutterTextObjectOuterPending)
+xmap ga <Plug>(GitGutterTextObjectInnerVisual)
+xmap gh <Plug>(GitGutterTextObjectOuterVisual)
+
+
+]])
 

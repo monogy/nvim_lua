@@ -14,7 +14,9 @@ autocmd Filetype markdown inoremap <buffer> ,,j :---\|
 autocmd Filetype markdown inoremap <buffer> ,,l ---:\|
 " autocmd Filetype markdown inoremap <buffer> ,. * 
 autocmd Filetype markdown inoremap <buffer> ,. * 
-autocmd Filetype markdown inoremap <buffer> ,c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
+autocmd Filetype markdown inoremap <buffer> ,<Space> &nbsp; 
+" autocmd Filetype markdown inoremap <buffer> ,c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
+autocmd Filetype markdown inoremap <buffer> ,c ```<++>```<Enter><++><Esc>2kA
 autocmd Filetype markdown inoremap <buffer> ,mm - [ ] <Enter><++><ESC>kA
 autocmd Filetype markdown inoremap <buffer> ,mn - [x] <Enter><++><ESC>kA
 autocmd Filetype markdown inoremap <buffer> ,9 1. <Enter><++><ESC>kA

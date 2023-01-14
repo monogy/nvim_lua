@@ -1,9 +1,9 @@
 local function map(mode, lhs, rhs, opts)
-	local options = { noremap = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+  local options = { noremap = true }
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 vim.cmd('let mapleader=" "')
@@ -15,7 +15,6 @@ vim.cmd('let mapleader=" "')
 -- map('n', '<leader><CR>', 'i<CR><ESC>i', {})
 
 
--- Vim for Colemak
 -- New cursor movement (the default arrow keys are used for resizing windows)
 --     ^
 --     i
@@ -23,11 +22,9 @@ vim.cmd('let mapleader=" "')
 --     k
 --     v
 --
-
-map('', '<leader>i', '<C-w>k', {})
-map('', '<leader>k', '<C-w>j', {})
-map('', '<leader>j', '<C-w>h', {})
-map('', '<leader>l', '<C-w>l', {})
+-- 插入
+map('', 'h', 'i', {})
+map('', 'H', 'I', {})
 
 map('', 'i', 'k', {})
 map('', 'j', 'h', {})
@@ -37,16 +34,18 @@ map('', 'I', '5k', {})
 map('', 'J', '5h', {})
 map('', 'K', '5j', {})
 map('', 'L', '5l', {})
-map('', 'L', '5l', {})
 map('', '<C-i>', '5<C-y>', {})
 map('', '<C-k>', '5<C-e>', {})
 
+map('', '<leader>i', '<C-w>k', {})
+map('', '<leader>k', '<C-w>j', {})
+map('', '<leader>j', '<C-w>h', {})
+map('', '<leader>l', '<C-w>l', {})
 
-
-map('n', '<A-up>', ':res +5<CR>', {})
-map('n', '<A-down>', ':res -5<CR>', {})
-map('n', '<A-left>', ':vertical resize-5<CR>', {})
-map('n', '<A-right>', ':vertical resize+5<CR>', {})
+map('', '<A-up>', ':res +5<CR>', {})
+map('', '<A-down>', ':res -5<CR>', {})
+map('', '<A-left>', ':vertical resize-5<CR>', {})
+map('', '<A-right>', ':vertical resize+5<CR>', {})
 
 
 -- 光标跳转至行首
@@ -55,13 +54,13 @@ map('', 'E', '^', {})
 map('', 'B', '$', {})
 
 -- 取消高亮
-map('', '<leader>/', ':noh<CR>')
+-- map('', '<leader>/', ':noh<CR>')
 
 
 
 -- 缩进管理
-map('', '<', '<<', {})
-map('', '>', '>>', {})
+map('n', '<', '<<', {})
+map('n', '>', '>>', {})
 
 map('n', ';', ':', {})
 
@@ -70,19 +69,15 @@ map('', 'Q', ':q!<cr>', {})
 map('', '<C-s>', ':w<cr>', {})
 map('', 'zz', ':wq<cr>', {})
 
--- 插入
-map('n', 'h', 'i', {})
-map('n', 'H', 'I', {})
-
 
 -- About buffers
-map('n', ',,', ':vsp<cr>', {})
-map('n', '<leader>[]', ':tabedit<cr>', {})
+-- map('n', ',,', ':vsp<cr>', {})
+-- map('n', '<leader>[]', ':tabedit<cr>', {})
 --map('n', 'H', '<c-w>h', {})
 --map('n', 'I', '<c-w>l', {})
 
 -- Quickly edit the configuration
-map('n', '<leader>fs', ':tabedit ~/.config/nvim/lua/plugins.lua<cr>', {})
+-- map('n', '<leader>fs', ':tabedit ~/.config/nvim/lua/plugins.lua<cr>', {})
 
 -- Copy and Past from the system clipboard
 map('v', 'Y', '"+y', {})
@@ -112,9 +107,9 @@ map('', '<leader>pc', ':PackerClean<CR>', {})
 
 
 -- 标签移动/关闭
--- map('', 'sa', ':bp<CR>', {})
--- map('', 'sd', ':bn<CR>', {})
-map('', 'sc', ':bd<CR>', {})
+-- map('', 'sd', ':bp<CR>', {})
+-- map('', 'sa', ':bn<CR>', {})
+-- map('', 'sc', ':bd<CR>', {})
 
 
 -- 保存root权限文件
@@ -134,15 +129,15 @@ map('', 'sv', '<C-w>t<C-w>H', {})
 
 
 -- Some functional configuration
-map('n', '<backspace>', ':noh<cr>', {})		-- cancel highlight that from search
---map('n', '<space>', 'viw', {})				-- select a word
---map('n', '-', '@q', {})						-- play the macro 'q'
+map('n', '<backspace>', ':noh<cr>', {})   -- cancel highlight that from search
+--map('n', '<space>', 'viw', {})        -- select a word
+--map('n', '-', '@q', {})           -- play the macro 'q'
 
 -- -- Telescope
 -- Find file
 map("n", "ff", "<cmd>Telescope find_files theme=dropdown<CR>", {})
 -- Find word
-map("n", "fg", "<cmd>Telescope live_grep theme=dropdown<CR>", {})
+map("n", "fg", "<cmd>Telescope grep_string theme=dropdown<CR>", {})
 -- Find special sample
 map("n", "fb", "<cmd>Telescope buffers theme=dropdown<CR>", {})
 -- check help doc
@@ -153,16 +148,28 @@ map("n", "fo", "<cmd>Telescope oldfiles theme=dropdown<CR>", {})
 map("n", "fm", "<cmd>Telescope marks theme=dropdown<CR>", {})
 
 -- Open Terminal
-vim.cmd('autocmd TermOpen term://* startinsert')
-map('n', '<leader>T', ':term<CR>', {})
+-- vim.cmd('autocmd TermOpen term://* startinsert')
+-- map('n', '<leader>T', ':term<CR>', {})
+
 -- Open Lazygit
-map('n', '<C-g>', ':tabe<CR>:-tabmove<CR>:term lazygit<CR>', {})
+map('n', '<C-g>', ':FloatermNew --height=0.95 --width=0.95 lazygit<CR>', {})
 
 -- 开始宏录制
 map('', '<leader>q', ':normal @', {})
 
 --
 require ('conf.barbar')
+
+-- 浮动终端
+map("n", "<F8>", ":FloatermNew<CR>", {})
+map("t", "<F8>", '<C-\\><C-n>:FloatermNew<CR>', {})
+map("n", "<F9>", ":FloatermPrev<CR>", {})
+map("t", "<F9>", "<C-\\><C-n>:FloatermPrev<CR>", {})
+map("n", "<F10>", ":FloatermNext<CR>", {})
+map("t", "<F10>", "<C-\\><C-n>:FloatermNext<CR>", {})
+map("n", "<F12>", ":FloatermToggle<CR>", {})
+map("t", "<F12>", "<C-\\><C-n>:FloatermToggle<CR>", {})
+
 
 -- " nnoremap <c-h> <Replace-Shortcut>  :Farr<cr>
 -- " nnoremap <c-h> <Replace-Shortcut>  :Farr<cr>

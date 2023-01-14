@@ -5,23 +5,18 @@ noremap <F5> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
   exec "w"
   if &filetype == 'c'
-    exec "!g++ % -o %<"
-    exec "!time ./%<"
+    :FloatermNew --autoclose=0 gcc % -o %< && ./%<
   elseif &filetype == 'cpp'
-    set splitbelow
-    exec "!g++ -std=c++11 % -Wall -o %<"
-    :sp
+    :FloatermNew --autoclose=0 g++ -std=c++11 % -Wall -o %<
     " :res -15
     :term ./%<
     " elseif &filetype == 'java'
     " exec "!javac %"
     " exec "!time java %<"
   elseif &filetype == 'sh'
-    :!time bash %
+    :FloatermNew --autoclose=0 bash %
   elseif &filetype == 'python'
-    set splitbelow
-    :sp
-    :term python3 %
+    :FloatermNew --autoclose=0 time python3 %
   elseif &filetype == 'html'
     silent! exec '!firefox % &'
   elseif &filetype == 'markdown'

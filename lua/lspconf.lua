@@ -11,9 +11,11 @@ require("nvim-lsp-installer").setup{
 
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<Leader>r", "<cmd>PickIcons<cr>", opts)
-vim.keymap.set("i", "<C-w>", "<cmd>PickInsert<cr>", opts)
+-- vim.keymap.set("n", "<Leader>r", "<cmd>PickIcons<cr>", opts)
+vim.keymap.set("i", "<C-w>", "<cmd>PickIcons<cr>", opts)
 vim.keymap.set("i", "<A-w>", "<cmd>PickAltFontAndSymbolsInsert<cr>", opts)
+
+
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -73,4 +75,5 @@ for _, lsp in ipairs(servers) do
 end
 
 require('conf.snippets')
+
 
