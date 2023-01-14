@@ -72,9 +72,22 @@ vim.o.termencoding='UTF-8'
 vim.o.encoding='UTF-8'
 vim.o.fileencodings='UTF8,UCS-BOM,GBK,CP936,GB2312,GB18030'
 
-vim.cmd('set backupdir=~/.config/nvim/tmp/backup,.')
-vim.cmd('set directory=~/.config/nvim/tmp/backup,.')
-vim.cmd('silent !mkdir -p ~/.config/nvim/tmp/backup')
+
+-- 文件操作：Backup&Undo
+vim.cmd([[
+
+silent !mkdir -p ~/.config/nvim/tmp/backup
+silent !mkdir -p ~/.config/nvim/tmp/undo
+"silent !mkdir -p ~/.config/nvim/tmp/sessions
+set backupdir=~/.config/nvim/tmp/backup,.
+set directory=~/.config/nvim/tmp/backup,.
+if has('persistent_undo')
+  set undofile
+  set undodir=~/.config/nvim/tmp/undo,.
+endif
+
+
+]])
 
 
 
